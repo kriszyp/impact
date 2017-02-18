@@ -1,4 +1,4 @@
-let { Div, Span, Label, NumberInput, Variable, all, round } = alkali
+let { P, Div, Span, Label, NumberInput, Variable, all, round } = alkali
 christians = new Variable(1000)
 population = new Variable(100000)
 christianEvangelismRate = new Variable(5)
@@ -33,24 +33,27 @@ netMargin = all([christians, population, christianEvangelismRate, initialConvers
 })
 
 document.body.appendChild(new Div([
-  Label([
-    'Current Christian Population:',
-    NumberInput(christians)
-  ]),  
-  Label([
-    'Total Population:',
-    NumberInput(population)
-  ]),
-  Label([
-    'Christian Evangelism Rate %:',
-    NumberInput(christianEvangelismRate)
-  ]),  
-  Label([
-    'Estimated Missionary Direct Conversions:',
-    NumberInput(initialConversions)
-  ]),
+ P(['This is simulation of the impact of missionaries in conjunction with estimated Christian growth rates, to better compare long-term missionary impacts in different cultures and environments.']),
   Div([
-    'Net conversions due to marginal missionary impact: ',
-    Span(round(netMargin, 0))
+    Label([
+      'Current Christian Population:',
+      NumberInput(christians)
+    ]),  
+    Label([
+      'Total Population:',
+      NumberInput(population)
+    ]),
+    Label([
+      'Christian Growth Rate (% growth per year):',
+      NumberInput(christianEvangelismRate)
+    ]),  
+    Label([
+      'Estimated Missionary Direct Conversions:',
+      NumberInput(initialConversions)
+    ]),
+    Div([
+      'Net conversions due to marginal missionary impact: ',
+      Span(round(netMargin, 0))
+    ])
   ])
 ]))
